@@ -1,8 +1,8 @@
 # bigfinite Front End test
 
 ### Run the project
-npm i
-npm run start
+- npm i
+- npm run start
 
 
 ### Help!
