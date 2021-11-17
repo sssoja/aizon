@@ -1,13 +1,11 @@
 import React from 'react';
-import { Tab, Tabs } from './Tabs';
-
+import Tabs, { Tab } from './Tabs.js';
 function App() {
   return (
     <Tabs>
-      <Tab title='Tab1'>Content of tab 1</Tab>
-      <Tab title='Tab2'>Content of tab 2</Tab>
-      <Tab title='Tab3'>Content of tab 3</Tab>
-  </Tabs>
+      <Tab title='tab 1'>Content of tab 1</Tab>
+      <Tab title='tab 2'>Content of tab 2</Tab>
+    </Tabs>
   );
 }
 
