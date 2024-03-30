@@ -1,32 +1,35 @@
-import { useState } from "react";
+import classnames from "classnames";
+import React, { useState } from "react";
 
-type Tab = {
+type TabProps = {
   title: string;
-  content: any;
+  content: React.ReactNode;
 };
 
-const Tabs = ({ tabs }: { tabs: Tab[] }) => {
+const Tabs: React.FC<{ tabs: TabProps[] }> = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const activeTabContent = tabs[activeTab].content;
 
   return (
     <div className="flex flex-col w-full">
-      <div className="display: flex">
-        {tabs.map((tab: Tab, index: number) => (
+      <div className="flex">
+        {tabs.map((tab: TabProps, index: number) => (
           <button
             key={index}
-            className={
-              index === activeTab
-                ? "flex-[auto] cursor-pointer p-2 border-b-2 border-b-customBlue border-solid"
-                : "flex-[auto] cursor-pointer p-2 border-b-2 border-b-customGray border-solid"
-            }
+            className={classnames(
+              "flex-auto cursor-pointer p-2 border-b-2 border-solid",
+              {
+                "border-b-customBlue": index === activeTab,
+                "border-b-customGray": index !== activeTab,
+              }
+            )}
             onClick={() => setActiveTab(index)}
           >
             <span
-              className={
-                index === activeTab
-                  ? "text-customBlue text-sm font-semibold text-center"
-                  : "text-customGray text-sm font-semibold text-center"
-              }
+              className={classnames("text-sm font-semibold text-center", {
+                "text-customBlue": index === activeTab,
+                "text-customGray": index !== activeTab,
+              })}
             >
               {tab.title}
             </span>
@@ -34,7 +37,7 @@ const Tabs = ({ tabs }: { tabs: Tab[] }) => {
         ))}
       </div>
       <div className="text-sm text-customGray px-2 py-4">
-        {tabs[activeTab].content}
+        {activeTabContent}
       </div>
     </div>
   );
