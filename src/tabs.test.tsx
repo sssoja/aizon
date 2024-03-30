@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react";
-import Tabs from "./Tabs";
 import "@testing-library/jest-dom";
+import Tabs from "./Tabs";
 
 describe("Tabs component", () => {
   const tabs = [
